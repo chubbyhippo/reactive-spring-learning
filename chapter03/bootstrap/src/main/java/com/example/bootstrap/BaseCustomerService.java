@@ -33,7 +33,7 @@ public class BaseCustomerService implements CustomerService {
 			KeyHolder keyHolder = new GeneratedKeyHolder();
 			this.jdbcTemplate.update(connection -> {
 				PreparedStatement ps = connection.prepareStatement(
-						"insert into CUSTOMERS (name) value(?)",
+						"insert into CUSTOMERS (name) values(?)",
 						Statement.RETURN_GENERATED_KEYS);
 				ps.setString(1, name);
 				return ps;
@@ -49,7 +49,7 @@ public class BaseCustomerService implements CustomerService {
 
 	@Override
 	public Customer findById(Long id) {
-		String sql = "select * from CUSTOMER where id = ?";
+		String sql = "select * from CUSTOMERS where id = ?";
 		return this.jdbcTemplate.queryForObject(sql,
 				this.rowMapper, id);
 	}
