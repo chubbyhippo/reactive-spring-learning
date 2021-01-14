@@ -10,8 +10,8 @@ import com.example.bootstrap.DataSourceUtils;
 
 public class DevelopmentOnlyCustomerService extends BaseCustomerService {
 
-	protected DevelopmentOnlyCustomerService(DataSource ds) {
-		super(ds);
+	protected DevelopmentOnlyCustomerService() {
+		super(buildDataSource());
 	}
 
 	private static DataSource buildDataSource() {

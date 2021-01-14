@@ -40,7 +40,7 @@ public class BaseCustomerService implements CustomerService {
 			}, keyHolder);
 			Long keyHolderKey = Objects
 					.requireNonNull(keyHolder.getKey().longValue());
-			Customer customer = (Customer) this.findById(keyHolderKey);
+			Customer customer = this.findById(keyHolderKey);
 			Assert.notNull(name, "thie name given must not be null");
 			customerList.add(customer);
 		}
@@ -48,9 +48,9 @@ public class BaseCustomerService implements CustomerService {
 	}
 
 	@Override
-	public CustomerService findById(Long id) {
+	public Customer findById(Long id) {
 		String sql = "select * from CUSTOMER where id = ?";
-		return (CustomerService) this.jdbcTemplate.queryForObject(sql,
+		return this.jdbcTemplate.queryForObject(sql,
 				this.rowMapper, id);
 	}
 

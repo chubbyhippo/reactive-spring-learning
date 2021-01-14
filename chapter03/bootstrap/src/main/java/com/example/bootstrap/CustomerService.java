@@ -6,7 +6,7 @@ public interface CustomerService {
 	
 	Collection<Customer> save(String... names);
 	
-	CustomerService findById(Long id);
+	Customer findById(Long id);
 	
 	Collection<Customer>findAll(); 
 }
