@@ -2,7 +2,7 @@ package com.example.bootstrap.context;
 
 import javax.sql.DataSource;
 
-import org.apache.catalina.core.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -38,7 +38,7 @@ public class Application {
 
 	public static void main(String[] args) {
 
-		ApplicationContext ac = SpringUtils.run(Application.class, "prod");
+		ConfigurableApplicationContext ac = SpringUtils.run(Application.class, "prod");
 
 		CustomerService cs = ac.getBean(CustomerService.class);
 		Demo.workWithCustomerService(Application.class, cs);

@@ -18,8 +18,7 @@ public class SpringUtils {
 		applicationContext.register(sources);
 		applicationContext.refresh();
 
-		applicationContext.refresh();
-
+		applicationContext.start();
 		return applicationContext;
 	}
 

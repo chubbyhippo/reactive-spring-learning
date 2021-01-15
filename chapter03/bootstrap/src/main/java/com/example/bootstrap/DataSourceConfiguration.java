@@ -1,5 +1,8 @@
 package com.example.bootstrap;
 
+
+
+
 import java.sql.Driver;
 
 import javax.sql.DataSource;
@@ -35,6 +38,25 @@ public class DataSourceConfiguration {
 
 			dataSource.setDriverClassName(driverClass.getName());
 			return dataSource;
+		}
+		
+		@Bean
+		DataSourcePostProcessor dataSourcePostProcessor() {
+			return new DataSourcePostProcessor();
+		}
+
+		private static class DataSourcePostProcessor
+				implements
+					BeanPostProcessor {
+
+			@Override
+			public Object postProcessAfterInitialization(Object bean,
+					String beanName) throws BeansException {
+				if (bean instanceof DataSource) {
+					DataSourceUtils.initializedDbl(DataSource.class.cast(bean));
+				}
+				return bean;
+			}
 		}
 	}
 
