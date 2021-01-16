@@ -11,16 +11,16 @@ import com.example.bootstrap.Demo;
 
 public class Application {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		DataSource dataSource = new EmbeddedDatabaseBuilder()
-				.setType(EmbeddedDatabaseType.H2).build();
+        DataSource dataSource = new EmbeddedDatabaseBuilder()
+                .setType(EmbeddedDatabaseType.H2).build();
 
-		DataSource initializedDataSource = DataSourceUtils
-				.initializedDbl(dataSource);
-		CustomerService cs = new DataSourceCustomerService(
-				initializedDataSource);
-		Demo.workWithCustomerService(Application.class, cs);
-	}
+        DataSource initializedDataSource = DataSourceUtils
+                .initializedDbl(dataSource);
+        CustomerService cs = new DataSourceCustomerService(
+                initializedDataSource);
+        Demo.workWithCustomerService(Application.class, cs);
+    }
 
 }

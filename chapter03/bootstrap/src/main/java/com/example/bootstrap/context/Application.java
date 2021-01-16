@@ -20,27 +20,27 @@ import com.example.bootstrap.templates.TransactionTemplateCustomerService;
 @Import(DataSourceConfiguration.class)
 public class Application {
 
-	@Bean
-	PlatformTransactionManager transactionManager(DataSource ds) {
-		return new DataSourceTransactionManager(ds);
-	}
+    @Bean
+    PlatformTransactionManager transactionManager(DataSource ds) {
+        return new DataSourceTransactionManager(ds);
+    }
 
-	@Bean
-	TransactionTemplateCustomerService customerService(DataSource ds,
-			TransactionTemplate tt) {
-		return new TransactionTemplateCustomerService(ds, tt);
-	}
+    @Bean
+    TransactionTemplateCustomerService customerService(DataSource ds,
+                                                       TransactionTemplate tt) {
+        return new TransactionTemplateCustomerService(ds, tt);
+    }
 
-	@Bean
-	TransactionTemplate transactionTemplate(PlatformTransactionManager tm) {
-		return new TransactionTemplate(tm);
-	}
+    @Bean
+    TransactionTemplate transactionTemplate(PlatformTransactionManager tm) {
+        return new TransactionTemplate(tm);
+    }
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		ConfigurableApplicationContext ac = SpringUtils.run(Application.class, "prod");
+        ConfigurableApplicationContext ac = SpringUtils.run(Application.class, "prod");
 
-		CustomerService cs = ac.getBean(CustomerService.class);
-		Demo.workWithCustomerService(Application.class, cs);
-	}
+        CustomerService cs = ac.getBean(CustomerService.class);
+        Demo.workWithCustomerService(Application.class, cs);
+    }
 }

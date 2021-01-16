@@ -9,5 +9,4 @@ public class DataSourceCustomerService extends BaseCustomerService {
 	public DataSourceCustomerService(DataSource ds) {
 		super(ds);
 	}
-
 }
