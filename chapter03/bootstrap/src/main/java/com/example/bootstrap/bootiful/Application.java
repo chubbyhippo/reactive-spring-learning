@@ -14,7 +14,7 @@ import com.example.bootstrap.Demo;
 public class Application {
 
 	public static void main(String[] args) {
-		System.setProperty("spring.profiles.active", "prod");
+		System.setProperty("spring.profiles.active", "dev");
 		SpringApplication.run(Application.class, args);
 	}
 
