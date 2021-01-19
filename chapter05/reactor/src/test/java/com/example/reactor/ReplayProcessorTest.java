@@ -19,9 +19,10 @@ public class ReplayProcessorTest {
 
 	@Test
 	public void replayProcessor() {
-		int historySize = 2;
-		boolean unbounded = false;
 
+		int historySize = 2;
+		
+		// unbounded = false;
 		Sinks.Many<String> sinks = Sinks.many().replay().limit(historySize);
 		sinks.emitNext("1", null);
 		sinks.emitNext("2", null);
