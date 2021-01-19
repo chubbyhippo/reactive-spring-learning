@@ -1,4 +1,4 @@
-package com.example.reactor;
+package com.example.reactor.processors;
 
 import org.junit.jupiter.api.Test;
 

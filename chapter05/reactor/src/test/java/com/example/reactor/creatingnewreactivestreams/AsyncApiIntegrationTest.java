@@ -1,4 +1,4 @@
-package com.example.reactor;
+package com.example.reactor.creatingnewreactivestreams;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
