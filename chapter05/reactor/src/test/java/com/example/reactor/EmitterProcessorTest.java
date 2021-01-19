@@ -6,7 +6,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Sinks;
 import reactor.test.StepVerifier;
 // EmitterProcessor was deprecated
-public class SinksTest {
+public class EmitterProcessorTest {
 
 	private void consume(Flux<String> publisher) {
 		StepVerifier.create(publisher)
