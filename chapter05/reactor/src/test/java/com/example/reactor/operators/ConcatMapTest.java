@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
-public class FlatMapTest {
+public class ConcatMapTest {
 
 	@AllArgsConstructor
 	static class Pair {
@@ -16,18 +16,18 @@ public class FlatMapTest {
 		private long delay;
 	}
 
-	private Flux<Integer> delayReplyFor(Integer i, long delay) {
+	private Flux<Integer> delayReplayFor(Integer i, long delay) {
 		return Flux.just(i).delayElements(Duration.ofMillis(delay));
 	}
 
 	@Test
-	public void flatMap() {
+	public void concatMap() {
+		Flux<Integer> data = Flux
+				.just(new Pair(1, 300), new Pair(2, 200), new Pair(3, 100))
+				.concatMap(id -> this.delayReplayFor(id.id, id.delay));
 
-		Flux<Integer> data = Flux.just(new Pair(1, 300), new Pair(2, 200),
-				new Pair(3, 100))
-				.flatMap(id -> this.delayReplyFor(id.id, id.delay));
+		StepVerifier.create(data).expectNext(1, 2, 3).verifyComplete();
 
-		StepVerifier.create(data).expectNext(3, 2, 1).verifyComplete();
 	}
 
 }
