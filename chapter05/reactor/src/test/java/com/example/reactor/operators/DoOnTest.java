@@ -3,6 +3,7 @@ package com.example.reactor.operators;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 import org.reactivestreams.Subscription;
@@ -45,6 +46,15 @@ public class DoOnTest {
 
 		finallySignals.forEach(log::info);
 		assertThat(finallySignals.size()).isEqualTo(1);
+		
+		subscriptions.forEach(log::info);
+		assertThat(subscriptions.size()).isEqualTo(1);
+		
+		exceptions.forEach(log::info);
+		assertThat(exceptions.get(0) instanceof IllegalArgumentException);
+		
+		nextValues.forEach(log::info);
+		assertThat(Arrays.asList(1, 2, 3)).isEqualTo(nextValues);
 
 	}
 
