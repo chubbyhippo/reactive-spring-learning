@@ -29,7 +29,8 @@ public class SchedulersHookTest {
 				.delayElements(Duration.ofMillis(1))
 				.subscribeOn(Schedulers.immediate());
 		StepVerifier.create(integerFlux).expectNext(1, 2, 3).verifyComplete();
-		assertThat(counter.get()).isEqualTo(3);
+		assertThat(counter.get()).as("count should be 3").isEqualTo(3);
+
 	}
 
 }
