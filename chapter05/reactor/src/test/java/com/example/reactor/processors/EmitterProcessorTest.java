@@ -19,10 +19,10 @@ public class EmitterProcessorTest {
 	@Test
 	public void sinks() {
 		Sinks.Many<String> sinks = Sinks.many().multicast().onBackpressureBuffer();
-		sinks.emitNext("1", null);
-		sinks.emitNext("2", null);
-		sinks.emitNext("3", null);
-		sinks.emitComplete(null);
+		sinks.tryEmitNext("1");
+		sinks.tryEmitNext("2");
+		sinks.tryEmitNext("3");
+		sinks.tryEmitComplete();
 		consume(sinks.asFlux());
 	}
 
