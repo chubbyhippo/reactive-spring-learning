@@ -22,5 +22,4 @@ public class OnErrorReturnTest {
 		Flux<Integer> integerFlux = resultsInError.onErrorReturn(0);
 		StepVerifier.create(integerFlux).expectNext(1, 0).verifyComplete();
 	}
-
 }
