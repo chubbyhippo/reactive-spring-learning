@@ -7,9 +7,6 @@ import java.util.function.Consumer;
 
 import org.springframework.util.FileCopyUtils;
 
-import lombok.extern.log4j.Log4j2;
-
-@Log4j2
 public class Synchronous implements Reader {
 	
 	@Override
