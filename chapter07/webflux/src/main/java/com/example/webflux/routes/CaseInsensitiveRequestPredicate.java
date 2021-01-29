@@ -21,8 +21,7 @@ public class CaseInsensitiveRequestPredicate implements RequestPredicate {
 		log.info("test was called");
 		log.info("test content was " + new LowercaseUriServerRequestWrapper(request).uri());
 		log.info("test result was " + target.test(new LowercaseUriServerRequestWrapper(request)));
-//		return target.test(new LowercaseUriServerRequestWrapper(request).uri());
-		return true;
+		return target.test(new LowercaseUriServerRequestWrapper(request));
 	}
 
 	@Override
